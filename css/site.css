@@ -3,6 +3,8 @@
     --secondary-color: #F16806;
     --dark-color: #292929;
     --white-color: #e7e7e7;
+    --fizzbuzz-yellow: #C9AF35;
+    --fizzbuzz-grey: #837C7B
 }
 
 body {
@@ -87,7 +89,7 @@ footer .my-link>a:visited {
 }
 
 .checklist > li i {
-    color: var(--secondary-color);
+    color: var(--fizzbuzz-yellow);
 }
 
 code[class*="language-"],
@@ -95,4 +97,8 @@ code[class*="language-"],
         white-space: pre-wrap;
         word-break: break-all;
         word-wrap: break-word;
+}
+
+div .fizzbuzz .btn:hover {
+    color: var(--fizzbuzz-yellow);
 }
