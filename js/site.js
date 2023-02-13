@@ -74,11 +74,37 @@ function generateResults(fizz, buzz, start, end) {
 // UI CONCERN
 function displayResults(results) {
 
-    let html = "";
-    // loop through array, creating html
-    for (let index = 0; index < results.length - 1; index++) {
+    let htmlRows = "";
+    let htmlColumns = 1;
+    let no = "";
+    let yes = ' class="fizzbuzz'
+
+    // loop through array, creating html table rows and starting a new row after every 5 columns
+    for (let index = 0; index < results.length; index++) {
         
+        if( htmlColumns == 1 ) {
+            // start a new html row
+            htmlRows = `${htmlRows}<tr>`;
+        }
+
+        if ( isNaN(results[index]) == true) {
+            htmlRows = `${htmlRows}<td class="fizzbuzz">`;
+        } else {
+            htmlRows = `${htmlRows}<td>`;
+        }
+
+        htmlRows = `${htmlRows}${results[index]}</td>`;
+        
+        if( htmlColumns == 5 ) {
+            htmlRows = `${htmlRows}</tr>`;
+            htmlColumns = 1;
+        } else {
+            htmlColumns++;
+        }
     }
-        // start new tr afer every 5 td's
+
+    // inject results into document
+    document.getElementById("tbodyFizzBuzz").innerHTML = htmlRows;
+    document.getElementById("tableFizzBuzz").classList.remove("invisible");
 
 }

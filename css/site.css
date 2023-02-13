@@ -104,6 +104,7 @@ div .fizzbuzz .btn:hover {
 }
 
 tbody .fizzbuzz {
-    font-weight: bold;
-    color: var(--fizzbuzz-yellow)
+    font-weight: bolder;
+    color: var(--fizzbuzz-grey);
 }
+
