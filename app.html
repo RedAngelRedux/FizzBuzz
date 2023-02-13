@@ -62,7 +62,48 @@
     <!-- === MAIN SECTION === --> 
     <main class="flex-shrink-0">
         <div class="container mt-5">
-            
+            <div class="row">
+                <div class="col">
+                    <img src="/img/logoApp.png" class="img-fluid center-block d-block mx-auto">
+                    <hr>
+                    <div class="display-6 fw-bold">Instructions</div>
+                    <p>Enter two numbers, select a range, and click the button.</p> 
+                    <div class="display-6 fw-bold">Expected Result</div>
+                    <p>Our busy little bee will display all the numbers in your range, replacing the number with "fizz" 
+                        if it is divisible by the first input, "buzz" if it is divisible by the second input, and 
+                        "fizzbuzz" if divisible by both.</p>
+                </div>
+                <div class="col border-start border-end border-2">                    
+                    <form class="row row-cols-1 row-cols-lg-2">
+                        <div class="col">
+                            <label type="label" class="form-label" for="fizzNumm">FIZZ Number</label>
+                            <input type="number" class="form-control" id="fizzNum" name="fizzNum" placeholder="3" aria-label="Fizz Number">
+                        </div>
+                        <div class="col">
+                            <label type="label" class="form-label" for="buzzNumm">BUZZ Number</label>
+                            <input type="number" class="form-control" id="buzzNum" name="buzzNum" placeholder="5" aria-label="Buzz Number">
+                        </div>
+                        <div class="bol">
+                            <label type="label" class="form-label" for="startRange">Statt Range</label>
+                            <input type="number" class="form-control" id="startRange" name="startRange" placeholder="0" aria-label="Start of Range">
+                        </div>
+                        <div clss="col">
+                            <label type="label" class="form-label" for="endRange">End Range</label>
+                            <input type="number" class="form-control" id="endRange" name="endRange" placeholder="100" aria-label="End of Range">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <table class="table-striped">
+                                <thead>
+                                    <td colspan="5">FizzBuzz Results</td>
+                                </thead>
+                                <tbody id="tbodyFizzBuzz" class="fizzbuzz">
+                                    <!-- <tr><td></td><td></td><td></td><td></td><td></td></tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
         </div>
     </main>
 
