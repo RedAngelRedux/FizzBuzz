@@ -1,2 +1,2 @@
-# cfJavaScriptMiniSiteTemplate
-Minisite Template for JavaScript Projects
+# FizzBuzz
+A Divisibility Game
