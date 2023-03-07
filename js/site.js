@@ -5,11 +5,20 @@ function getValues() {
     let resultsDiv = document.getElementById("resultsDiv");
     resultsDiv.innerHTML = "";
 
+    // get handlt to runtime span
+    let runtimeSpan = document.getElementById("runtime");
+    runtimeSpan.innerHTML = "";
+    
     // obtain user values
     let fizzNum = document.getElementById("fizzNum").value;
     let buzzNum = document.getElementById("buzzNum").value;
     let startRange = document.getElementById("startRange").value;
     let endRange = document.getElementById("endRange").value;
+    let variations = document.getElementsByName("rbVariation");
+    let variation = "rbA";
+    for( let i of variations) {
+        variation = (i.checked) ? i.id : variation;
+    }
 
 
     // validate input
@@ -41,12 +50,30 @@ function getValues() {
         let results = [];
 
         const start = performance.now();
+        switch(variation) {
+            case "rbA": {
+                results = generateResults(fizzNum,buzzNum,startRange,endRange);
+                break;
+            }
+            case "rbB": {
+                results = generateResultsB(fizzNum,buzzNum,startRange,endRange);
+                break;
+            }
+            case "rbC": {
+                results = generateResultsC(fizzNum,buzzNum,startRange,endRange);
+                break;
+            }
+            case "rbD": {
+                results = generateResultsD(fizzNum,buzzNum,startRange,endRange);
+                break;
+            }
+        }
         results = generateResults(fizzNum,buzzNum,startRange,endRange);
         const end = performance.now();
 
-        displayResults(results);
+        runtimeSpan.innerHTML = `Execution time for solution selected was ${roundNumber(end-start,4)} ms`;
 
-        alert (`Execution time: ${end-start} ms `);
+        displayResults(results);
 
     } else {
 
@@ -208,4 +235,9 @@ function displayResults(fbArray) {
 
         // document.getElementById("tableFizzBuzz").classList.remove("invisible");
     resultsDiv.appendChild(table);
+}
+
+function roundNumber(rnum, rlength) { 
+    var newnumber = Math.round(rnum * Math.pow(10, rlength)) / Math.pow(10, rlength);
+    return newnumber;
 }
