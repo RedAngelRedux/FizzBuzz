@@ -1,5 +1,5 @@
-// CONTROLLER CONCERN
-function getValues() {
+// CONTROLLER
+function runFizzBuzz() {
 
     // Reset alert & results table to invisible
     let resultsDiv = document.getElementById("resultsDiv");
@@ -97,7 +97,7 @@ function getValues() {
 
 }
 
-// LOGIC CONCERN
+// LOGIC
 function generateResults(fizz, buzz, start, end) {
 
     let results = []; 
@@ -186,6 +186,7 @@ function generateResultsD(fizz,buzz,start,end) {
     return results;
 }
 
+// UI
 function displayResults(fbArray) {
 
     // get handle to results div
@@ -237,7 +238,13 @@ function displayResults(fbArray) {
     resultsDiv.appendChild(table);
 }
 
+// SUPPORT LOGIC
 function roundNumber(rnum, rlength) { 
     var newnumber = Math.round(rnum * Math.pow(10, rlength)) / Math.pow(10, rlength);
     return newnumber;
+}
+
+// SUPPORT UI
+function toggleViewCode() {
+    
 }
