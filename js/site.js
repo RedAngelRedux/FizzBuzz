@@ -2,8 +2,6 @@
 function getValues() {
 
     // Reset alert & results table to invisible
-    // document.getElementById("alert").classList.add("invisible");
-    // document.getElementById("tableFizzBuzz").classList.add("invisible");
     let resultsDiv = document.getElementById("resultsDiv");
     resultsDiv.innerHTML = "";
 
@@ -42,14 +40,15 @@ function getValues() {
 
         let results = [];
 
+        const start = performance.now();
         results = generateResults(fizzNum,buzzNum,startRange,endRange);
+        const end = performance.now();
 
         displayResults(results);
 
-    } else {
+        alert (`Execution time: ${end-start} ms `);
 
-        // get handle to results div
-        // let resultsDiv = document.getElementById("resultsDiv");
+    } else {
 
         // get handle to template
         let alertTemplate = document.getElementById("alertTemplate");
@@ -66,10 +65,6 @@ function getValues() {
 
         // append template to results div
         resultsDiv.appendChild(template);
-
-        // display error alert
-        // document.getElementById("errorMsg").innerHTML = errorMsg;
-        // document.getElementById("alert").classList.remove("invisible");
         
     }
 
@@ -96,74 +91,73 @@ function generateResults(fizz, buzz, start, end) {
 
 }
 
-// UI CONCERN
-// function displayResults(results) {
+function generateResultsB(fizz, buzz, start, end) {
 
-//     let htmlRows = "";
-//     let htmlColumns = 1;
-//     let no = "";
-//     let yes = ' class="fizzbuzz'
+    let results = [];
+    let Fizz = false;
+    let Buzz = false;
 
-//     // loop through array, creating html table rows and starting a new row after every 5 columns
-//     for (let index = 0; index < results.length; index++) {
+    for (let num = start; num <= end; num++) {
         
-//         if( htmlColumns == 1 ) {
-//             // start a new html row
-//             htmlRows = `${htmlRows}<tr>`;
-//         }
+        Fizz = num % fizz == 0;
+        Buzz = num % buzz == 0;
 
-//         if ( isNaN(results[index]) == true) {
-//             htmlRows = `${htmlRows}<td class="fizzbuzz">`;
-//         } else {
-//             htmlRows = `${htmlRows}<td>`;
-//         }
-
-//         htmlRows = `${htmlRows}${results[index]}</td>`;
-        
-//         if( htmlColumns == 5 ) {
-//             htmlRows = `${htmlRows}</tr>`;
-//             htmlColumns = 1;
-//         } else {
-//             htmlColumns++;
-//         }
-//     }
-
-//     // inject results into document
-//     document.getElementById("tbodyFizzBuzz").innerHTML = htmlRows;
-//     document.getElementById("tableFizzBuzz").classList.remove("invisible");
-
-// }
-
-// function displayResults(fbArray) {
-
-//     // get the table body class from the DOM
-//     let tableBody = document.getElementById("tbodyFizzBuzz");
+        switch(true) {
+            case Fizz && Buzz: {
+                results.push("FizzBuzz");
+                break;
+            }
+            case Fizz: {
+                results.push("Fizz");
+                break;
+            }
+            case Buzz: {
+                results.push("Buzz");
+            }
+            default: {
+                results.push(num);
+                break;
+            }
+        }
+    }
     
-//     // get the template row
-//     let templateRow = document.getElementById("fbTemplate");
 
-//     // clear table first
-//     tableBody.innerHTML = "";
+    return results;
+}
 
-//     // add all the rows to the table
-//     for (let index = 0; index < fbArray.length; index += 5) {
-        
-//         let tableRow = document.importNode(templateRow.content,true);
+function generateResultsC(fizz,buzz,start,end) {
+    // Metastrap
 
-//         // grab just the td's and put them into an array
-//         let rowCols = tableRow.querySelectorAll("td");
-//         rowCols[0].textContent = fbArray[index];
-//         rowCols[1].textContent = fbArray[index+1];
-//         rowCols[2].textContent = fbArray[index+2];
-//         rowCols[3].textContent = fbArray[index+3];
-//         rowCols[4].textContent = fbArray[index+4];
+    let results = [];
 
-//         tableBody.appendChild(tableRow);
-//     }
+    for (let num = start; num <= end; num++) {
+        let value =  ( (num % fizz == 0 ? "Fizz" : "") + (num % buzz == 0 ? "Buzz" : "") || num );
+        results.push(value);
+    }
 
-//         document.getElementById("tableFizzBuzz").classList.remove("invisible");
+    return results;
 
-// }
+}
+
+function generateResultsD(fizz,buzz,start,end) {
+    let results = [];
+
+    for (let num = start; num <= end; num++) {
+
+        if(num % fizz == 0 && num % buzz == 0) {
+            results.push("FizzBuzz");
+        } else if (num % fizz == 0) {
+            results.push("Fizz");
+        } else if (num % buzz == 0) {
+            results.push("Buzz");
+        } else {
+            results.push(num);
+        }
+
+    }
+
+    return results;
+}
 
 function displayResults(fbArray) {
 
@@ -179,15 +173,6 @@ function displayResults(fbArray) {
 
     // clear p tag
     tbodyFizzBuzz.innerHTML = "";
-
-    // // get handle to tbody DOM
-    // let tbodyFizzBuzz = document.getElementById("tbodyFizzBuzz");
-    
-    // // get the template row
-    // let templateRow = document.getElementById("fbTemplate");
-
-    // clear table first
-    // tbodyFizzBuzz.innerHTML = "";
 
     // add all the rows to the table
     for (let index = 0; index < fbArray.length; index += 5) {
@@ -223,5 +208,4 @@ function displayResults(fbArray) {
 
         // document.getElementById("tableFizzBuzz").classList.remove("invisible");
     resultsDiv.appendChild(table);
-
 }

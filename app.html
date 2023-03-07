@@ -91,6 +91,28 @@
                             <label type="label" class="form-label" for="endRange">End Range</label>
                             <input type="number" class="form-control" id="endRange" name="endRange" placeholder="100" value="100" aria-label="End of Range">
                         </div>
+                        <div class="col-12 col-lg-6">
+                            <label type="label" class="form-label mt-2" for="divVariation">Logtic Variation:</label>
+                        </div>                        
+                        <div class="col-12 d-flex justify-content-start" id="divVariation">
+                            <div class="form-check me-2">
+                                <label class="form-check-label" for="rbA">A</label>
+                                <input class="form-check-input" type="radio" name="rbVariation" id="rbA" checked>
+                            </div>
+                            <div class="form-check me-2">
+                                <label class="form-check-label" for="rbA">B</label>
+                                <input class="form-check-input" type="radio" name="rbVariation" id="rbB">
+                            </div>
+                            <div class="form-check me-2">
+                                <label class="form-check-label" for="rbA">C</label>
+                                <input class="form-check-input" type="radio" name="rbVariation" id="rbC">
+                            </div>
+                            <div class="form-check me-2">
+                                <label class="form-check-label" for="rbA">D</label>
+                                <input class="form-check-input" type="radio" name="rbVariation" id="rbD">
+                            </div> 
+                            <span class="border border-warning" id="runtime"></span>  
+                        </div>
                         <div class="col-12 d-flex justify-content-end mb-3">
                             <button type="button" id="btnSubmit" class="btn btn-warning mt-2">Go Bee</button>
                         </div>
